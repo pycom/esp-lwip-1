@@ -124,6 +124,8 @@ tcp_input(struct pbuf *p, struct netif *inp)
 #if TCP_INPUT_DEBUG
   tcp_debug_print(tcphdr);
 #endif
+  printf("dropping tcp packet!\n");
+  goto dropped;
 
   /* Check that TCP header fits in payload */
   if (p->len < TCP_HLEN) {
